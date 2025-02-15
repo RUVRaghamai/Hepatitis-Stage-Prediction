@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main-content %}
+<style>
+    .cont
+    {
+         background: #add8e6;
+         width:75%;
+         border-color: black;
+         border-radius: 15px;
+    }
+    input, select, textarea {
+        border-radius: 5px;
+        padding: 4px;
+        border: 1px solid black; 
+        width: 75%;
+        box-sizing: border-box;
+    }
+</style>
+    <div class="container cont d-flex justify-content-center align-items-center py-3" style="min-height: 100vh;">
+        <div class="col-md-6">
+            <h1 class="text-center mb-5">Hepatitis Stage Prediction</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    {% for field in form %}
+                        <div class="d-flex mb-3 align-items-center" style="font-size:18px;">
+                            <label for="{{ field.id_for_label }}" class="form-label font-weight-bold" style="width: 40%; font-weight: bold;">
+                                {{ field.label_tag }}
+                            </label>
+                            <div style="width: 60%;">
+                                {{ field }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary w-50" style="padding: 10px 10px; font-size: 14px; border-radius:10px;">Predict Stage</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock main-content %}

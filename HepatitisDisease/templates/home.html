@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main-content %}
+<style>
+    body
+    {
+        background-color: #add8e6;
+    }
+    .home-container
+    {
+        background-color:transparent;
+        padding-top:45px;
+        padding-bottom:45px;
+        width:75%;
+        border-radius: 20px;
+
+    }
+</style>
+    {% if user.is_authenticated %}
+    <div class="container home-container text-center my-5">
+        <h1>Welcome to the Hepatitis Disease Prediction System</h1>
+        <p>Click the button below to predict the stage of hepatitis disease based on your input.</p>
+        <a href="{% url 'predict_stage' %}" class="btn btn-primary">Predict Stage</a>
+    </div>
+    {% else %}
+    {% endif %}
+{% endblock main-content %}

@@ -1,0 +1,7 @@
+/* HepatitisDisease/static/css/styles.css */
+.banner-section-bg-container
+{
+  background:url("{% static 'images/1.jpg' %}");
+  background-size:cover;
+  height:90vh;
+}

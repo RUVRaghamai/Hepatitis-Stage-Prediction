@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main-content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        .card {
+            background-color: #add8e6; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+        }
+
+        .btn-small {
+            padding: 10px 10px;
+            font-size: 12px;
+            width: 150px; 
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card text-center">
+            <h1 class="card-title">Hepatitis Stage Prediction</h1>
+            <p class="card-text">The predicted stage of hepatitis is: </p> 
+            <p style="font-size:30px;"><strong>{{ stage }}</strong></p>
+            <div class="mt-auto">
+                <a href="{% url 'predict_stage' %}" class="btn btn-primary btn-small">Try Again</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock main-content %}

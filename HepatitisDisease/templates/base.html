@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+
+    <title>Hepatitis Disease | {% block title %}{% endblock title %}</title>
+    <style>
+html, body {
+    height: 100%;  /* Ensures both html and body are 100% height */
+    margin: 0;  /* Removes any default margin */
+    padding: 0;  /* Removes any default padding */
+}
+
+body {
+    {% if user.is_authenticated %}
+        background-color: white;
+    {% else %}
+        background: url("{% static 'images/img.jpg' %}") no-repeat center center fixed;
+        background-size: cover;  /* Ensures the image covers the whole background */
+        height: 100%;
+        min-height: 100vh;  /* Ensures minimum height is 100% of the viewport */
+    {% endif %}
+}
+
+nav {
+    background-color: transparent;
+}
+
+.nav-link {
+    color: black !important;
+}
+</style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light p-2">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'images/1.jpg' %}" width="80px" height="40px" style="border-radius:10px;" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 18px;">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="{% url 'home' %}">Home</a>
+                        </li>
+                          <li class="nav-item">
+                            <a class="nav-link text-white" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Contact</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item mx-2">
+                            <a class="nav-link text-white" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item mx-2" style="font-size: 18px;">
+                            <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
+                        </li>
+                        <li class="nav-item mx-2" style="font-size: 18px;">
+                            <a href="{% url 'customerregistration' %}" class="nav-link text-white">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block banner %}{% endblock banner %}
+    {% block main-content %}{% endblock main-content %}
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" 
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" 
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/myscript.js' %}"></script>
+    <script src="{% static 'js/all.min.js' %}"></script>
+    <script src="{% static 'js/cart.js' %}"></script>
+</body>
+</html>
