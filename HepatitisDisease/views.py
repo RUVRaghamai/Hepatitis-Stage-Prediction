@@ -86,6 +86,11 @@ from .forms import HepatitisForm
 
 # Assuming the model and scaler have already been loaded
 import joblib
+import os
+
+BASE_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+model_path=os.path.join(BASE_DIR,'Hepatitis','scripts','trained_model.pk1')
+scaler_path=os.path.join(BASE_DIR,'Hepatitis','scripts','scaler.pk1')
 model = joblib.load('C:/Users/raghamairvu/OneDrive/Desktop/FINALYEARPROJECT/project/Finalyear/Hepatitis/scripts/trained_model.pkl')
 scaler = joblib.load('C:/Users/raghamairvu/OneDrive/Desktop/FINALYEARPROJECT/project/Finalyear/Hepatitis/scripts/scaler.pkl')
 
